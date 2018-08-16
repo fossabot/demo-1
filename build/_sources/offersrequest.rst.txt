@@ -1,0 +1,20 @@
+Offers Request
+==============
+
+Once the bounds were obtained, you can call the ``offers`` link provided in the bounds response to get a list of offers related to the bound selected.
+
+The response for offers returns an object, where the attribute ``ads`` has a list of products to offer the user. It looks like this_.
+
+.. _this: http://wearesyte.com/apiexample/example_offers.json
+
+Every product contains the following:
+
+- ``description`` - some text about the product as provided by merchant/affiliate.
+- ``floatPrice`` - the current price for this product as float
+- ``floatOriginalPrice`` - the original price for this product as float. having both allows you to present discounts, for example.
+- ``price`` - the formatted floatPrice with currency symbol (of type text).
+- ``originalPrice`` - the formatted floatOriginalPrice with currency symbol (of type text).
+- ``brand`` - the brand of the product
+- ``merchant`` - the seller of the product
+- ``imageUrl`` - the image for the product
+- ``offer`` - the link to use to get to the product page at the sellers site.
