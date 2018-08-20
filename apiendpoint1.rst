@@ -1,13 +1,16 @@
 API Endpoint v1.0
 #################
 
-Users of this API will receive results as bounding boxes and offers for each box. 
+Users of this API will receive results as bounding boxes (for each item in an image) and offers for each box. 
 
-Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see product feed section).
+Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
 
-The API comprises of two distinct requests:
- - bounds - will return an object mapping from image url to list of bounding boxes.
- - offers - from the list of bounding boxes, you can request the url under the ``offers`` attribute, and get a list of offers for this bounding box.
+The API is comprised of two distinct requests:
+ - **bounds** - will return an object mapping from image url to list of bounding boxes.
+ - **offers** - from the list of bounding boxes, you can request the url under the ``offers`` attribute, and get a list of offers for this bounding box.
+
+.. note:: Syte **strongly** recommends to use API Endpoint v1.1, if possible.
+
 
 
 **API Base URL**
@@ -30,7 +33,7 @@ You can ask for bounds of an **image binary**, by running the following command 
 
 .. code-block:: bash
 
-   curl -v 'https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&payload_type=image_bin' --data-binary @my_test_image.jpg
+   curl -v 'https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&feed=[YOUR_FEED_NAME]&payload_type=image_bin' --data-binary @my_test_image.jpg
 
 
 
@@ -41,18 +44,18 @@ You can also ask for bounds by sending an **image url**:
 
 .. code-block:: bash
 
-   curl -v 'https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&payload_type=image_bin' --data-binary @my_test_image.jpg
+   curl -v 'https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&feed=[YOUR_FEED_NAME]&payload_type=image_bin' --data-binary @my_test_image.jpg
 
 
-Users of this api should provide the ``{account_id}``, ``{sig}`` and ``{feed}`` params, as provided by Syte.
+Users of this API should replace the ``[account_id]``, ``[sig]`` and ``[feed]`` params, with the corresponding credentials as provided to you by Syte.
 
 
 **The API response for** the ``Bounds`` **request will look like** `this
 <http://wearesyte.com/apiexample/example_bb.json>`_.
 
 Every bound includes the following:
- - ``offers`` link - the link to use for getting offers on this bounding box.
- - ``label`` - the product category this bound assumes. this name is an indicator (some with typos).
+ - ``offers`` link - the link used for getting offers on this bounding box.
+ - ``label`` - the product category this bound assumes. this category is an indicator (some with typos).
  - Three points in the format of ``[x, y]``:
       1. ``center`` - the center of the box
       2. ``b0`` - the top left corner of the box

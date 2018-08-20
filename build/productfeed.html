@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Product Data Feed &mdash; Syte API Docs 2.0 documentation</title>
+  <title>Product Catalog - Data Feed &mdash; Syte API Docs 1.1 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
   
   
   
@@ -28,7 +30,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Camera Upload Intergration" href="camera.html" /> 
+    <link rel="prev" title="Camera Upload Integration" href="camera.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -51,10 +53,17 @@
           
 
           
+            
+            <img src="_static/syte-logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
+            
+              <div class="version">
+                1.1
+              </div>
             
           
 
@@ -80,10 +89,10 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint1.html">API Endpoint v1.0</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint V1.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Intergration</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Product Data Feed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Product Catalog - Data Feed</a></li>
 </ul>
 
             
@@ -129,7 +138,7 @@
     
       <li><a href="main.html">Docs</a> &raquo;</li>
         
-      <li>Product Data Feed</li>
+      <li>Product Catalog - Data Feed</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -148,20 +157,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="product-data-feed">
-<h1>Product Data Feed<a class="headerlink" href="#product-data-feed" title="Permalink to this headline">¶</a></h1>
-<p>In order to receive results from a specific product feed the client needs to provide the product data feed in a CSV format. The file should be utf-8 coded. please find a sample CSV and the explanations below to each column. This format will ensure optimal results.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Title</span></code> - product name.
-<code class="docutils literal notranslate"><span class="pre">Description</span></code> - whatever long product description is currently used (or unused).
-<code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">category</span></code> - the category the specific product belongs to e.g. dresses, jackets, lingerie.
-<code class="docutils literal notranslate"><span class="pre">Gender</span></code> - e.g men’s, women, kids, boys, girls.
-<code class="docutils literal notranslate"><span class="pre">price</span></code> - numeric price but also with / without sale so it can be published to the front end.
-<code class="docutils literal notranslate"><span class="pre">Currency</span></code> - three letter acronym for this price i.e. EUR, USD.
-<code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">_URL</span></code> - the page where one can buy the product.
-<code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">image</span> <span class="pre">URL</span></code> - the URL of all the main image of the product.
-<code class="docutils literal notranslate"><span class="pre">Alternative_image_url</span></code> - the URL of all the alternative images of the product.
-<code class="docutils literal notranslate"><span class="pre">merchant</span></code> - the name of the merchant
-<code class="docutils literal notranslate"><span class="pre">brand</span></code> - the name of the brand</p>
+  <div class="section" id="product-catalog-data-feed">
+<span id="productfeed"></span><h1>Product Catalog - Data Feed<a class="headerlink" href="#product-catalog-data-feed" title="Permalink to this headline">¶</a></h1>
+<p>In order to receive results from a specific product feed the client has to provide the product data feed in the CSV format.</p>
+<p>The file should be UTF-8 coded.</p>
+<div class="line-block">
+<div class="line">Please find <a class="reference external" href="http://wearesyte.com/syteapi_docs/csv/csv_format.csv">this sample csv</a> and the explanations below to each column.</div>
+<div class="line">This format will ensure optimal results.</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Title</span></code> - Product name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Description</span></code> - whatever long product description is currently used (or unused).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">category</span></code> - the category the specific product belongs to (e.g. dresses, jackets, lingerie).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Gender</span></code> - e.g men, women, kids, boys, girls.</p>
+<p><code class="docutils literal notranslate"><span class="pre">price</span></code> - numeric price but also with / without sale so it can be displayed on the front end interface.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Currency</span></code> - three letter acronym for this price i.e. EUR, USD.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">_URL</span></code> - the page where one can buy the product.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Main</span> <span class="pre">image</span> <span class="pre">URL</span></code> - the URL of all the main images of the product.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Alternative_image_url</span></code> - the URL of all the alternative images of the product.</p>
+<p><code class="docutils literal notranslate"><span class="pre">merchant</span></code> - the name of the merchant.</p>
+<p><code class="docutils literal notranslate"><span class="pre">brand</span></code> - the name of the brand.</p>
 </div>
 
 
@@ -173,7 +187,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="camera.html" class="btn btn-neutral" title="Camera Upload Intergration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="camera.html" class="btn btn-neutral" title="Camera Upload Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -204,7 +218,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.0',
+            VERSION:'1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -1,16 +1,23 @@
-API Endpoint V1.1
+API Endpoint v1.1
 #################
 
-This version of the API introduce the concepts of the catalog param which add the option to get results for fashion, home or both.
+This version of the API introduces the concepts of the catalog param, which adds the option of getting results for fashion items, home items or both.
+
+Users of this API will receive results as bounding boxes and offers for each box. 
+
+Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
+
+The API is comprised of two distinct requests:
+ - **bounds** - will return an object mapping from image url to list of bounding boxes.
+ - **offers** - from the list of bounding boxes, you can request the url under the ``offers`` attribute, and get a list of offers for this bounding box.
+
 
 **API Base URL**
 
-https://syteapi.com/v1.1
+.. code-block:: html
 
-The API comprises of two distinct requests:
+ https://syteapi.com/v1.1
 
- - bounds - will return an object mapping from image url to list of bounding boxes.
- - offers - from the list of bounding boxes, one can request the url under the offers attribute, and get a list of offers for the specific bounding box.
 
 
 Bounds Request
@@ -25,7 +32,7 @@ You can ask for bounds of an **image binary**, by running the following command 
 
 .. code-block:: bash
 
- curl -v 'https://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&payload_type=image_bin' --data-binary @my_test_image.jpg
+ curl -v 'https://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&feed=[YOUR_FEED_NAME]&sig=[YOUR_ACCOUT_SIGNATURE]&payload_type=image_bin' --data-binary @my_test_image.jpg
 
 Image URL
 =========
@@ -34,9 +41,9 @@ You can also ask for bounds of an **image url**. Please see example below:
 
 .. code-block:: bash
 
- curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
+ curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&feed=[YOUR_FEED_NAME]sig=[YOUR_ACCOUT_SIGNATURE]' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
 
-Users of this api should provide an ``account_id`` and ``sig`` as provided by Syte.
+Users of this API should replace the ``[account_id]``, ``[sig]`` and ``[feed]`` params, with the corresponding credentials as provided to you by Syte.
 
 To get bounds for fashion items, add the **catalog** param to the call like so: ``&catalog=fashion``
 
@@ -50,8 +57,8 @@ The API response for ``Bounds`` request will look like `this
 Every bound includes the following:
 
  - ``gender`` - if relevant, the gender of the person in the image.
- - ``offers`` link - the link to use for getting offers on this bounding box.
- - ``label`` - the product category this bound assumes. this name is an indicator (some with typos).
+ - ``offers`` link - the link used for getting offers on this bounding box.
+ - ``label`` - the product category this bound assumes. this category is an indicator (some with typos).
  - ``catalog`` - the catalog (fashion or home) that the specific bounds belongs to.
  - Three points in the format of ``[x, y]``:
       1. ``center`` - the center of the box
@@ -128,7 +135,7 @@ You can find the full list of categories here_.
 
 
 Related Looks
-=============
+*************
 
 You can send an image and get related looks from social networks. To enable this feature, please contact Syte.
 
@@ -140,14 +147,14 @@ Here is an example of a bounds call with the related_looks feature:
 
  curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&features=related_looks' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
 
-The response to this call includes a "related_looks" link (similar to the offers link), that when followed, will return a list of image url's with simiar looks from social networks.
+The response to this call includes a "related_looks" link (similar to the offers link), that when followed, will return a list of image URLs with similar looks from social networks.
 
 Deep Tagging
-============
+************
 
-You can send an image and get a break down of each garment in the image to it’s most nuanced attributes. To enable this feature, please contact Syte.
+You can send an image and get a break down of each garment in the image to its most nuanced attributes. To enable this feature, please contact Syte.
 
-To use this feature, please add ``&features=deeptags`` to the bounds request. This feature will only work with version V1.1 of the API.
+To use this feature, please add ``&features=deeptags`` to the bounds request. This feature will only work with version v1.1 of the API.
 
 Here is an example of a bounds call with the related_looks feature:
 

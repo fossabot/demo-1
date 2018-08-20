@@ -8,10 +8,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Endpoint v1.0 &mdash; Syte API Docs 2.0 documentation</title>
+  <title>API Endpoint v1.0 &mdash; Syte API Docs 1.1 documentation</title>
   
 
   
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
   
   
   
@@ -28,8 +30,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="API Endpoint V1.1" href="apiendpoint11.html" />
-    <link rel="prev" title="Introduction" href="introduction.html" /> 
+    <link rel="next" title="Camera Upload Integration" href="camera.html" />
+    <link rel="prev" title="API Endpoint v1.1" href="apiendpoint11.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -52,10 +54,17 @@
           
 
           
+            
+            <img src="_static/syte-logo.png" class="logo" alt="Logo"/>
+          
           </a>
 
           
             
+            
+              <div class="version">
+                1.1
+              </div>
             
           
 
@@ -81,6 +90,7 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint v1.1</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API Endpoint v1.0</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#bounds-request">Bounds Request</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#image-upload">Image Upload</a></li>
@@ -90,9 +100,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#offers-request">Offers Request</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint V1.1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Intergration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Data Feed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 </ul>
 
             
@@ -159,16 +168,20 @@
             
   <div class="section" id="api-endpoint-v1-0">
 <h1>API Endpoint v1.0<a class="headerlink" href="#api-endpoint-v1-0" title="Permalink to this headline">¶</a></h1>
-<p>Users of this API will receive results as bounding boxes and offers for each box.</p>
-<p>Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see product feed section).</p>
+<p>Users of this API will receive results as bounding boxes (for each item in an image) and offers for each box.</p>
+<p>Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="productfeed.html#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
 <dl class="docutils">
-<dt>The API comprises of two distinct requests:</dt>
+<dt>The API is comprised of two distinct requests:</dt>
 <dd><ul class="first last simple">
-<li>bounds - will return an object mapping from image url to list of bounding boxes.</li>
-<li>offers - from the list of bounding boxes, you can request the url under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
+<li><strong>bounds</strong> - will return an object mapping from image url to list of bounding boxes.</li>
+<li><strong>offers</strong> - from the list of bounding boxes, you can request the url under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
 </ul>
 </dd>
 </dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Syte <strong>strongly</strong> recommends to use API Endpoint v1.1, if possible.</p>
+</div>
 <p><strong>API Base URL</strong></p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>https://syteapi.com/
 </pre></div>
@@ -178,23 +191,23 @@
 <div class="section" id="image-upload">
 <h3>Image Upload<a class="headerlink" href="#image-upload" title="Permalink to this headline">¶</a></h3>
 <p>You can ask for bounds of an <strong>image binary</strong>, by running the following command and replacing “my_test_image.jpg” with the path to the image on the file system.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>
 </div>
 <div class="section" id="image-url">
 <h3>Image URL<a class="headerlink" href="#image-url" title="Permalink to this headline">¶</a></h3>
 <p>You can also ask for bounds by sending an <strong>image url</strong>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>
-<p>Users of this api should provide the <code class="docutils literal notranslate"><span class="pre">{account_id}</span></code>, <code class="docutils literal notranslate"><span class="pre">{sig}</span></code> and <code class="docutils literal notranslate"><span class="pre">{feed}</span></code> params, as provided by Syte.</p>
+<p>Users of this API should replace the <code class="docutils literal notranslate"><span class="pre">[account_id]</span></code>, <code class="docutils literal notranslate"><span class="pre">[sig]</span></code> and <code class="docutils literal notranslate"><span class="pre">[feed]</span></code> params, with the corresponding credentials as provided to you by Syte.</p>
 <p><strong>The API response for</strong> the <code class="docutils literal notranslate"><span class="pre">Bounds</span></code> <strong>request will look like</strong> <a class="reference external" href="http://wearesyte.com/apiexample/example_bb.json">this</a>.</p>
 <dl class="docutils">
 <dt>Every bound includes the following:</dt>
 <dd><ul class="first last simple">
-<li><code class="docutils literal notranslate"><span class="pre">offers</span></code> link - the link to use for getting offers on this bounding box.</li>
-<li><code class="docutils literal notranslate"><span class="pre">label</span></code> - the product category this bound assumes. this name is an indicator (some with typos).</li>
+<li><code class="docutils literal notranslate"><span class="pre">offers</span></code> link - the link used for getting offers on this bounding box.</li>
+<li><code class="docutils literal notranslate"><span class="pre">label</span></code> - the product category this bound assumes. this category is an indicator (some with typos).</li>
 <li><dl class="first docutils">
 <dt>Three points in the format of <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y]</span></code>:</dt>
 <dd><ol class="first last arabic">
@@ -240,10 +253,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="apiendpoint11.html" class="btn btn-neutral float-right" title="API Endpoint V1.1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="camera.html" class="btn btn-neutral float-right" title="Camera Upload Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="introduction.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="apiendpoint11.html" class="btn btn-neutral" title="API Endpoint v1.1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -274,7 +287,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'2.0',
+            VERSION:'1.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

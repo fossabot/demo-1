@@ -1,13 +1,13 @@
-Welcome to the Syte API Docs!
-===================================
+Welcome to the Syte API Documentation!
+======================================
 
 .. toctree::
    :caption: Table of Contents
    :name: mastertoc
 
    introduction
-   apiendpoint1
    apiendpoint11
+   apiendpoint1
    camera
    productfeed
    
@@ -18,12 +18,12 @@ Welcome to the Syte API Docs!
 
 -----------------------------------
 
-.. include:: apiendpoint1.rst
+.. include:: apiendpoint11.rst
 
 -----------------------------------
 
 
-.. include:: apiendpoint11.rst
+.. include:: apiendpoint1.rst
 
 -----------------------------------
 

@@ -1,9 +1,9 @@
-Camera Upload Intergration
+Camera Upload Integration
 ##########################
 
 Web and Mobile Web integration of the camera upload button is done by doing the following:
 
-Design the camera icon that will lunch the feature and give it this class: 
+Design the camera icon that will launch the feature and give it this class: 
 
 .. code-block:: html
 
