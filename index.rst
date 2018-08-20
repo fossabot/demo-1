@@ -10,6 +10,7 @@ Welcome to the Syte API Documentation!
    apiendpoint1
    camera
    productfeed
+   support
    
 
 -----------------------------------
