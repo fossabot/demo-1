@@ -336,7 +336,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;features=deeptags&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
 </div>
-<p>The response to this will add an array of tags to each bound returned from the bounds API call.</p>
+<p>The response to this will add an array of tags to each bound returned from the bounds API call. It will look like <a class="reference external" href="http://wearesyte.com/apiexample/deep_tags_example.json">this</a>.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -366,17 +366,17 @@
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span>https://syteapi.com/
 </pre></div>
 </div>
-<div class="section" id="id2">
-<h2>Bounds Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3>Image Upload<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h2>Bounds Request<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Image Upload<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>You can ask for bounds of an <strong>image binary</strong>, by running the following command and replacing “my_test_image.jpg” with the path to the image on the file system.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>Image URL<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Image URL<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>You can also ask for bounds by sending an <strong>image URL</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
@@ -406,8 +406,8 @@
 <p>All images assume origin (<code class="docutils literal notranslate"><span class="pre">[0,0]</span></code>) of the image to be top-left, and the bottom right is <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>.</p>
 </div>
 </div>
-<div class="section" id="id6">
-<h2>Offers Request<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id7">
+<h2>Offers Request<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>Once the bounds were obtained, you can call the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link provided in the bounds response to get a list of offers related to the bound selected.</p>
 <p>The response for offers returns an object, where the attribute <code class="docutils literal notranslate"><span class="pre">ads</span></code> has a list of products to offer the user. It looks like <a class="reference external" href="http://wearesyte.com/apiexample/example_offers.json">this</a>.</p>
 <p>Every product contains the following:</p>

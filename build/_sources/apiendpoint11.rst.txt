@@ -164,4 +164,4 @@ Here is an example of a bounds call with the related_looks feature:
 
  curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&features=deeptags' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
 
-The response to this will add an array of tags to each bound returned from the bounds API call.
+The response to this will add an array of tags to each bound returned from the bounds API call. It will look like `this <http://wearesyte.com/apiexample/deep_tags_example.json>`_.
