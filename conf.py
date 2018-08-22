@@ -159,6 +159,8 @@ source_parsers = {
 source_suffix = ['.rst', '.md']
 html_theme = "sphinx_rtd_theme"
 
+html_show_sourcelink = False
+
 
 # -- Options for Texinfo output ----------------------------------------------
 

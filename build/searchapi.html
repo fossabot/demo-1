@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Camera Upload Integration &mdash; Syte API Docs 1.1 documentation</title>
+  <title>Search API &mdash; Syte API Docs 1.1 documentation</title>
   
 
   
@@ -29,9 +29,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Product Catalog - Data Feed" href="productfeed.html" />
-    <link rel="prev" title="API Endpoint v1.0" href="apiendpoint1.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,11 +86,11 @@
             
             
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint1.html">API Endpoint v1.0</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Camera Upload Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
@@ -140,7 +138,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Camera Upload Integration</li>
+      <li>Search API</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -157,18 +155,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="camera-upload-integration">
-<h1>Camera Upload Integration<a class="headerlink" href="#camera-upload-integration" title="Permalink to this headline">¶</a></h1>
-<p>Web and Mobile Web integration of the camera upload button is done by doing the following:</p>
-<p>Design the camera icon that will launch the feature and give it this class:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;javascript:void(0)&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;--syte-start-camera-upload&quot;</span><span class="p">&gt;</span>
+  <div class="section" id="search-api">
+<h1>Search API<a class="headerlink" href="#search-api" title="Permalink to this headline">¶</a></h1>
+<p>Using our Search API, You are able to send rich text queries and recieve relevant results for these queries.</p>
+<p>Here’s the API call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://search.syteapi.com/search/items?q<span class="o">=</span>dress<span class="p">&amp;</span><span class="nv">account_id</span><span class="o">=[</span>YOUR_ACC_ID_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">feed</span><span class="o">=[</span>YOUR_FEED_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">sig</span><span class="o">=[</span>YOUR_SIG_HERE<span class="o">]</span>
 </pre></div>
 </div>
-<p>Add the following HTML script tag to the section of the HTML:</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//syteapi.com/assets/imajs/imajs.js?a=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<p>As in every API request, You need to replace the [] with the credentials provided by Syte. (<code class="docutils literal notranslate"><span class="pre">[YOUR_ACC_ID_HERE]</span></code> , <code class="docutils literal notranslate"><span class="pre">[YOUR_FEED_HERE]</span></code> , <code class="docutils literal notranslate"><span class="pre">[YOUR_SIG_HERE]</span></code>)</p>
+<div class="line-block">
+<div class="line">In the example above, the word <code class="docutils literal notranslate"><span class="pre">dress</span></code> is searched, as it appears after the parameter <code class="docutils literal notranslate"><span class="pre">q</span></code>.</div>
+<div class="line">In order to search multiple words, add <code class="docutils literal notranslate"><span class="pre">+</span></code> between each word.</div>
+<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">blue+maxi+dress</span></code>)</div>
+</div>
+<p>In conclusion, to search for a blue maxi dress, use this API call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://search.syteapi.com/search/items?q<span class="o">=</span>blue+maxi+dress<span class="p">&amp;</span><span class="nv">account_id</span><span class="o">=[</span>YOUR_ACC_ID_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">feed</span><span class="o">=[</span>YOUR_FEED_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">sig</span><span class="o">=[</span>YOUR_SIG_HERE<span class="o">]</span>
 </pre></div>
 </div>
-<p>Users of this service should provide an <code class="docutils literal notranslate"><span class="pre">account_id</span></code> and <code class="docutils literal notranslate"><span class="pre">sig</span></code> params, as provided by Syte.</p>
 </div>
 
 
@@ -176,15 +179,6 @@
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="productfeed.html" class="btn btn-neutral float-right" title="Product Catalog - Data Feed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="apiendpoint1.html" class="btn btn-neutral" title="API Endpoint v1.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

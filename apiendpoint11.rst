@@ -1,15 +1,16 @@
 API Endpoint v1.1
 #################
 
+| Using this API, Users will receive results as bounding boxes (a box on each item in the image) 
+| and offers for each box. 
+
 This version of the API introduces the concepts of the catalog param, which adds the option of getting results for fashion items, home items or both.
 
-Users of this API will receive results as bounding boxes and offers for each box. 
+.. important:: Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
 
-Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
-
-The API is comprised of two distinct requests:
- - **bounds** - will return an object mapping from image url to list of bounding boxes.
- - **offers** - from the list of bounding boxes, you can request the url under the ``offers`` attribute, and get a list of offers for this bounding box.
+The API is comprised of two different requests:
+ - **bounds** - will return an object mapping from image URL to list of bounding boxes.
+ - **offers** - from the list of bounding boxes, you can request the URL under the ``offers`` attribute, and get a list of offers for this bounding box.
 
 
 **API Base URL**
@@ -23,12 +24,13 @@ The API is comprised of two distinct requests:
 Bounds Request
 **************
 
-You can upload an **image** *or* send an **image URL**.
+You can **upload an image** *or* send an **image URL**.
 
 Image Upload
 ============
 
-You can ask for bounds of an **image binary**, by running the following command and replacing "my_test_image.jpg" with the path to the image on the file system.
+| You can ask for bounds of an **image binary** -
+| Run the following command **replace** "my_test_image.jpg" with the path to the image on the file system:
 
 .. code-block:: bash
 
@@ -37,7 +39,7 @@ You can ask for bounds of an **image binary**, by running the following command 
 Image URL
 =========
 
-You can also ask for bounds of an **image url**. Please see example below:
+You can also ask for bounds of an **image URL**. See example below:
 
 .. code-block:: bash
 
@@ -52,7 +54,7 @@ To get bounds for home items, add the **catalog** param to the call like so: ``&
 To get bounds for both fashion and home, add the **catalog** param to the call like so: ``&catalog=fashion,home``
 
 The API response for ``Bounds`` request will look like `this
-<http://wearesyte.com/apiexample/v1.1/example_bb.json/>`_.
+<http://wearesyte.com/apiexample/v1.1/example_bb.json>`_.
 
 Every bound includes the following:
 
@@ -78,7 +80,7 @@ Offers Request
 Once the bounds were obtained, you can call the ``offers`` link provided in the bounds response to get a list of offers related to the bound selected.
 
 The response for offers returns an object, where the attribute ``ads`` has a list of products to offer the user. It looks like `this
-<http://wearesyte.com/apiexample/v1.1/example_offers.json/>`_.
+<http://wearesyte.com/apiexample/v1.1/example_offers.json>`_.
 
 Every product contains the following:
 
@@ -139,7 +141,7 @@ Related Looks
 
 You can send an image and get related looks from social networks. To enable this feature, please contact Syte.
 
-To use this feature, please add ``&features=related_looks`` to the bounds request. This feature will only work with version V1.1 of the API.
+To use this feature, please add ``&features=related_looks`` to the bounds request. This feature will only work with version v1.1 of the API.
 
 Here is an example of a bounds call with the related_looks feature:
 
@@ -162,4 +164,4 @@ Here is an example of a bounds call with the related_looks feature:
 
  curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&features=deeptags' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
 
-The response to this will add an array of tags to each bound returened from the bounds API call
+The response to this will add an array of tags to each bound returned from the bounds API call.

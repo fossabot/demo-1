@@ -1,13 +1,14 @@
 API Endpoint v1.0
 #################
 
-Users of this API will receive results as bounding boxes (for each item in an image) and offers for each box. 
+| Using this API, Users will receive results as bounding boxes (a box on each item in the image) 
+| and offers for each box. 
 
-Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
+.. important:: Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
 
 The API is comprised of two distinct requests:
- - **bounds** - will return an object mapping from image url to list of bounding boxes.
- - **offers** - from the list of bounding boxes, you can request the url under the ``offers`` attribute, and get a list of offers for this bounding box.
+ - **bounds** - will return an object mapping from image URL to list of bounding boxes.
+ - **offers** - from the list of bounding boxes, you can request the URL under the ``offers`` attribute, and get a list of offers for this bounding box.
 
 .. note:: Syte **strongly** recommends to use API Endpoint v1.1, if possible.
 
@@ -40,7 +41,7 @@ You can ask for bounds of an **image binary**, by running the following command 
 Image URL
 =========
 
-You can also ask for bounds by sending an **image url**:
+You can also ask for bounds by sending an **image URL**:
 
 .. code-block:: bash
 

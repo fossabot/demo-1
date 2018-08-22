@@ -102,6 +102,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
 
             
@@ -153,8 +154,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/apiendpoint1.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -168,13 +167,19 @@
             
   <div class="section" id="api-endpoint-v1-0">
 <h1>API Endpoint v1.0<a class="headerlink" href="#api-endpoint-v1-0" title="Permalink to this headline">¶</a></h1>
-<p>Users of this API will receive results as bounding boxes (for each item in an image) and offers for each box.</p>
-<p>Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="productfeed.html#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
+<div class="line-block">
+<div class="line">Using this API, Users will receive results as bounding boxes (a box on each item in the image)</div>
+<div class="line">and offers for each box.</div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="index.html#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
+</div>
 <dl class="docutils">
 <dt>The API is comprised of two distinct requests:</dt>
 <dd><ul class="first last simple">
-<li><strong>bounds</strong> - will return an object mapping from image url to list of bounding boxes.</li>
-<li><strong>offers</strong> - from the list of bounding boxes, you can request the url under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
+<li><strong>bounds</strong> - will return an object mapping from image URL to list of bounding boxes.</li>
+<li><strong>offers</strong> - from the list of bounding boxes, you can request the URL under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
 </ul>
 </dd>
 </dl>
@@ -197,7 +202,7 @@
 </div>
 <div class="section" id="image-url">
 <h3>Image URL<a class="headerlink" href="#image-url" title="Permalink to this headline">¶</a></h3>
-<p>You can also ask for bounds by sending an <strong>image url</strong>:</p>
+<p>You can also ask for bounds by sending an <strong>image URL</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>

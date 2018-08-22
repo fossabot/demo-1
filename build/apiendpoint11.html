@@ -109,6 +109,7 @@
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint1.html">API Endpoint v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
 
             
@@ -160,8 +161,6 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/apiendpoint11.rst.txt" rel="nofollow"> View page source</a>
-          
         
       </li>
     
@@ -175,14 +174,20 @@
             
   <div class="section" id="api-endpoint-v1-1">
 <h1>API Endpoint v1.1<a class="headerlink" href="#api-endpoint-v1-1" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">Using this API, Users will receive results as bounding boxes (a box on each item in the image)</div>
+<div class="line">and offers for each box.</div>
+</div>
 <p>This version of the API introduces the concepts of the catalog param, which adds the option of getting results for fashion items, home items or both.</p>
-<p>Users of this API will receive results as bounding boxes and offers for each box.</p>
-<p>Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="productfeed.html#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="index.html#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
+</div>
 <dl class="docutils">
-<dt>The API is comprised of two distinct requests:</dt>
+<dt>The API is comprised of two different requests:</dt>
 <dd><ul class="first last simple">
-<li><strong>bounds</strong> - will return an object mapping from image url to list of bounding boxes.</li>
-<li><strong>offers</strong> - from the list of bounding boxes, you can request the url under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
+<li><strong>bounds</strong> - will return an object mapping from image URL to list of bounding boxes.</li>
+<li><strong>offers</strong> - from the list of bounding boxes, you can request the URL under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
 </ul>
 </dd>
 </dl>
@@ -192,17 +197,20 @@
 </div>
 <div class="section" id="bounds-request">
 <h2>Bounds Request<a class="headerlink" href="#bounds-request" title="Permalink to this headline">¶</a></h2>
-<p>You can upload an <strong>image</strong> <em>or</em> send an <strong>image URL</strong>.</p>
+<p>You can <strong>upload an image</strong> <em>or</em> send an <strong>image URL</strong>.</p>
 <div class="section" id="image-upload">
 <h3>Image Upload<a class="headerlink" href="#image-upload" title="Permalink to this headline">¶</a></h3>
-<p>You can ask for bounds of an <strong>image binary</strong>, by running the following command and replacing “my_test_image.jpg” with the path to the image on the file system.</p>
+<div class="line-block">
+<div class="line">You can ask for bounds of an <strong>image binary</strong> -</div>
+<div class="line">Run the following command <strong>replace</strong> “my_test_image.jpg” with the path to the image on the file system:</div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;feed=[YOUR_FEED_NAME]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>
 </div>
 <div class="section" id="image-url">
 <h3>Image URL<a class="headerlink" href="#image-url" title="Permalink to this headline">¶</a></h3>
-<p>You can also ask for bounds of an <strong>image url</strong>. Please see example below:</p>
+<p>You can also ask for bounds of an <strong>image URL</strong>. See example below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;feed=[YOUR_FEED_NAME]sig=[YOUR_ACCOUT_SIGNATURE]&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
 </div>
@@ -210,7 +218,7 @@
 <p>To get bounds for fashion items, add the <strong>catalog</strong> param to the call like so: <code class="docutils literal notranslate"><span class="pre">&amp;catalog=fashion</span></code></p>
 <p>To get bounds for home items, add the <strong>catalog</strong> param to the call like so: <code class="docutils literal notranslate"><span class="pre">&amp;catalog=home</span></code></p>
 <p>To get bounds for both fashion and home, add the <strong>catalog</strong> param to the call like so: <code class="docutils literal notranslate"><span class="pre">&amp;catalog=fashion,home</span></code></p>
-<p>The API response for <code class="docutils literal notranslate"><span class="pre">Bounds</span></code> request will look like <a class="reference external" href="http://wearesyte.com/apiexample/v1.1/example_bb.json/">this</a>.</p>
+<p>The API response for <code class="docutils literal notranslate"><span class="pre">Bounds</span></code> request will look like <a class="reference external" href="http://wearesyte.com/apiexample/v1.1/example_bb.json">this</a>.</p>
 <p>Every bound includes the following:</p>
 <blockquote>
 <div><ul class="simple">
@@ -238,7 +246,7 @@
 <div class="section" id="offers-request">
 <h2>Offers Request<a class="headerlink" href="#offers-request" title="Permalink to this headline">¶</a></h2>
 <p>Once the bounds were obtained, you can call the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link provided in the bounds response to get a list of offers related to the bound selected.</p>
-<p>The response for offers returns an object, where the attribute <code class="docutils literal notranslate"><span class="pre">ads</span></code> has a list of products to offer the user. It looks like <a class="reference external" href="http://wearesyte.com/apiexample/v1.1/example_offers.json/">this</a>.</p>
+<p>The response for offers returns an object, where the attribute <code class="docutils literal notranslate"><span class="pre">ads</span></code> has a list of products to offer the user. It looks like <a class="reference external" href="http://wearesyte.com/apiexample/v1.1/example_offers.json">this</a>.</p>
 <p>Every product contains the following:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">description</span></code> - some text about the product as provided by merchant/affiliate.</li>
@@ -279,7 +287,7 @@
 <div class="section" id="related-looks">
 <h2>Related Looks<a class="headerlink" href="#related-looks" title="Permalink to this headline">¶</a></h2>
 <p>You can send an image and get related looks from social networks. To enable this feature, please contact Syte.</p>
-<p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=related_looks</span></code> to the bounds request. This feature will only work with version V1.1 of the API.</p>
+<p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=related_looks</span></code> to the bounds request. This feature will only work with version v1.1 of the API.</p>
 <p>Here is an example of a bounds call with the related_looks feature:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;features=related_looks&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
@@ -294,7 +302,7 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;features=deeptags&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
 </div>
-<p>The response to this will add an array of tags to each bound returened from the bounds API call</p>
+<p>The response to this will add an array of tags to each bound returned from the bounds API call.</p>
 </div>
 </div>
 
