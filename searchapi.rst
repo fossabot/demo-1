@@ -1,7 +1,8 @@
 Search API
 ##########
 
-Using our Search API, You are able to send rich text queries and recieve relevant results for these queries.
+| Using our Search API, 
+| You are able to send rich text queries and recieve relevant results for these queries.
 
 You can ask for search results using the following API call:
 
@@ -21,3 +22,7 @@ In conclusion, to search for a blue maxi dress, use this API call:
 .. code-block:: bash
 
  https://search.syteapi.com/search/items?q=blue+maxi+dress&account_id=[YOUR_ACCOUNT_ID_HERE]&feed=[YOUR_FEED_NAME]&sig=[YOUR_ACCOUT_SIGNATURE]
+
+.. note:: 
+ | This feature needs to be activated by Syte for your account. 
+ | Please contact us if it is not activated.
