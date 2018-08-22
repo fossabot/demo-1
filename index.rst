@@ -11,6 +11,7 @@ Welcome to the Syte API Documentation!
    camera
    productfeed
    support
+   searchapi
    
 
 -----------------------------------
