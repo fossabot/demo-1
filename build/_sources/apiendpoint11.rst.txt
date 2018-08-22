@@ -139,9 +139,10 @@ You can find the full list of categories here_.
 Related Looks
 *************
 
-You can send an image and get related looks from social networks. To enable this feature, please contact Syte.
+You can send an image and get related looks from social networks.
 
-To use this feature, please add ``&features=related_looks`` to the bounds request. This feature will only work with version v1.1 of the API.
+| To use this feature, please add ``&features=related_looks`` to the bounds request. 
+| This feature will only work with version v1.1 of the API.
 
 Here is an example of a bounds call with the related_looks feature:
 
@@ -151,12 +152,17 @@ Here is an example of a bounds call with the related_looks feature:
 
 The response to this call includes a "related_looks" link (similar to the offers link), that when followed, will return a list of image URLs with similar looks from social networks.
 
+.. note:: 
+ | This feature needs to be activated by Syte for your account. 
+ | Please contact us if it is not activated.
+
 Deep Tagging
 ************
 
-You can send an image and get a break down of each garment in the image to its most nuanced attributes. To enable this feature, please contact Syte.
+You can send an image and get a break down of each garment in the image to its most nuanced attributes.
 
-To use this feature, please add ``&features=deeptags`` to the bounds request. This feature will only work with version v1.1 of the API.
+| To use this feature, please add ``&features=deeptags`` to the bounds request. 
+| This feature will only work with version v1.1 of the API.
 
 Here is an example of a bounds call with the related_looks feature:
 
@@ -164,4 +170,9 @@ Here is an example of a bounds call with the related_looks feature:
 
  curl -v 'http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&sig=[YOUR_ACCOUT_SIGNATURE]&features=deeptags' --data-binary '["http://wearesyte.com/syte_docs/images/1.jpeg"]'
 
-The response to this will add an array of tags to each bound returned from the bounds API call. It will look like `this <http://wearesyte.com/apiexample/deep_tags_example.json>`_.
+| The response to this will add an array of tags to each bound returned from the bounds API call. 
+| It will look like `this <http://wearesyte.com/apiexample/deep_tags_example.json>`_.
+
+.. note:: 
+ | This feature needs to be activated by Syte for your account. 
+ | Please contact us if it is not activated.

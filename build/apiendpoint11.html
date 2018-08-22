@@ -287,23 +287,46 @@
 </div>
 <div class="section" id="related-looks">
 <h2>Related Looks<a class="headerlink" href="#related-looks" title="Permalink to this headline">¶</a></h2>
-<p>You can send an image and get related looks from social networks. To enable this feature, please contact Syte.</p>
-<p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=related_looks</span></code> to the bounds request. This feature will only work with version v1.1 of the API.</p>
+<p>You can send an image and get related looks from social networks.</p>
+<div class="line-block">
+<div class="line">To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=related_looks</span></code> to the bounds request.</div>
+<div class="line">This feature will only work with version v1.1 of the API.</div>
+</div>
 <p>Here is an example of a bounds call with the related_looks feature:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;features=related_looks&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
 </div>
 <p>The response to this call includes a “related_looks” link (similar to the offers link), that when followed, will return a list of image URLs with similar looks from social networks.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">This feature needs to be activated by Syte for your account.</div>
+<div class="line">Please contact us if it is not activated.</div>
+</div>
+</div>
 </div>
 <div class="section" id="deep-tagging">
 <h2>Deep Tagging<a class="headerlink" href="#deep-tagging" title="Permalink to this headline">¶</a></h2>
-<p>You can send an image and get a break down of each garment in the image to its most nuanced attributes. To enable this feature, please contact Syte.</p>
-<p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=deeptags</span></code> to the bounds request. This feature will only work with version v1.1 of the API.</p>
+<p>You can send an image and get a break down of each garment in the image to its most nuanced attributes.</p>
+<div class="line-block">
+<div class="line">To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=deeptags</span></code> to the bounds request.</div>
+<div class="line">This feature will only work with version v1.1 of the API.</div>
+</div>
 <p>Here is an example of a bounds call with the related_looks feature:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;features=deeptags&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
 </div>
-<p>The response to this will add an array of tags to each bound returned from the bounds API call. It will look like <a class="reference external" href="http://wearesyte.com/apiexample/deep_tags_example.json">this</a>.</p>
+<div class="line-block">
+<div class="line">The response to this will add an array of tags to each bound returned from the bounds API call.</div>
+<div class="line">It will look like <a class="reference external" href="http://wearesyte.com/apiexample/deep_tags_example.json">this</a>.</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<div class="last line-block">
+<div class="line">This feature needs to be activated by Syte for your account.</div>
+<div class="line">Please contact us if it is not activated.</div>
+</div>
+</div>
 </div>
 </div>
 
