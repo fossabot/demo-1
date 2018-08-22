@@ -1,7 +1,7 @@
-Search API
-##########
+Text Search API
+###############
 
-| Using our Search API, 
+| Using our Text Search API, 
 | You are able to send rich text queries and recieve relevant results for these queries.
 
 You can ask for search results using the following API call:

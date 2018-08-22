@@ -6,7 +6,7 @@ API Endpoint v1.0
 
 .. important:: Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see :ref:`productfeed` section).
 
-The API is comprised of two distinct requests:
+The API is comprised of two different requests:
  - **bounds** - will return an object mapping from image URL to list of bounding boxes.
  - **offers** - from the list of bounding boxes, you can request the URL under the ``offers`` attribute, and get a list of offers for this bounding box.
 

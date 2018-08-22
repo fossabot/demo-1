@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint1.html">API Endpoint v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Text Search API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
@@ -189,7 +189,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Text Search API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
 </ul>
@@ -374,7 +374,7 @@
 <p class="last">Retailers who wish to use our API and receive offers from their own product catalog, need to send us a product data feed (see <a class="reference internal" href="#productfeed"><span class="std std-ref">Product Catalog - Data Feed</span></a> section).</p>
 </div>
 <dl class="docutils">
-<dt>The API is comprised of two distinct requests:</dt>
+<dt>The API is comprised of two different requests:</dt>
 <dd><ul class="first last simple">
 <li><strong>bounds</strong> - will return an object mapping from image URL to list of bounding boxes.</li>
 <li><strong>offers</strong> - from the list of bounding boxes, you can request the URL under the <code class="docutils literal notranslate"><span class="pre">offers</span></code> attribute, and get a list of offers for this bounding box.</li>
@@ -462,10 +462,10 @@
 <p>Users of this service should provide an <code class="docutils literal notranslate"><span class="pre">account_id</span></code> and <code class="docutils literal notranslate"><span class="pre">sig</span></code> params, as provided by Syte.</p>
 </div>
 <hr class="docutils" />
-<div class="section" id="search-api">
-<h1>Search API<a class="headerlink" href="#search-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="text-search-api">
+<h1>Text Search API<a class="headerlink" href="#text-search-api" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
-<div class="line">Using our Search API,</div>
+<div class="line">Using our Text Search API,</div>
 <div class="line">You are able to send rich text queries and recieve relevant results for these queries.</div>
 </div>
 <p>You can ask for search results using the following API call:</p>
