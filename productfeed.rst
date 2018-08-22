@@ -1,7 +1,7 @@
 .. _productfeed:
 
 Product Catalog - Data Feed
-===========================
+###########################
 
 In order to receive results from a specific product feed the client has to provide the product data feed in the CSV format. 
 

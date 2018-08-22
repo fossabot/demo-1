@@ -92,9 +92,9 @@
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint11.html">API Endpoint v1.1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apiendpoint1.html">API Endpoint v1.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
 </ul>
 
             
@@ -189,14 +189,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="camera.html">Camera Upload Integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="productfeed.html">Product Catalog - Data Feed</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
-<li class="toctree-l1"><a class="reference internal" href="searchapi.html">Search API</a></li>
 </ul>
+</div>
 </div>
 <hr class="docutils" />
 <div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>Welcome to Syte’s official API Documentation.</p>
 <p>This serves as a guide for developers who wish to integrate Syte’s visual search API into their digital assets.</p>
 <div class="line-block">
@@ -206,7 +207,7 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="api-endpoint-v1-1">
-<h2>API Endpoint v1.1<a class="headerlink" href="#api-endpoint-v1-1" title="Permalink to this headline">¶</a></h2>
+<h1>API Endpoint v1.1<a class="headerlink" href="#api-endpoint-v1-1" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
 <div class="line">Using this API, Users will receive results as bounding boxes (a box on each item in the image)</div>
 <div class="line">and offers for each box.</div>
@@ -229,13 +230,10 @@
 </pre></div>
 </div>
 <div class="section" id="bounds-request">
-<h3>Bounds Request<a class="headerlink" href="#bounds-request" title="Permalink to this headline">¶</a></h3>
+<h2>Bounds Request<a class="headerlink" href="#bounds-request" title="Permalink to this headline">¶</a></h2>
 <p>You can <strong>upload an image</strong> <em>or</em> send an <strong>image URL</strong>.</p>
-</div>
-</div>
-</div>
 <div class="section" id="image-upload">
-<h1>Image Upload<a class="headerlink" href="#image-upload" title="Permalink to this headline">¶</a></h1>
+<h3>Image Upload<a class="headerlink" href="#image-upload" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
 <div class="line">You can ask for bounds of an <strong>image binary</strong> -</div>
 <div class="line">Run the following command <strong>replace</strong> “my_test_image.jpg” with the path to the image on the file system:</div>
@@ -245,7 +243,7 @@
 </div>
 </div>
 <div class="section" id="image-url">
-<h1>Image URL<a class="headerlink" href="#image-url" title="Permalink to this headline">¶</a></h1>
+<h3>Image URL<a class="headerlink" href="#image-url" title="Permalink to this headline">¶</a></h3>
 <p>You can also ask for bounds of an <strong>image URL</strong>. See example below:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;http://syteapi.com/v1.1/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;feed=[YOUR_FEED_NAME]sig=[YOUR_ACCOUT_SIGNATURE]&#39;</span> --data-binary <span class="s1">&#39;[&quot;http://wearesyte.com/syte_docs/images/1.jpeg&quot;]&#39;</span>
 </pre></div>
@@ -277,6 +275,10 @@
 <p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of any of the points are in fractions. numbers in the range <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code>.</p>
 <p>To make an actual coordinate on an image, just multiply image height by <code class="docutils literal notranslate"><span class="pre">y</span></code> s and image width by <code class="docutils literal notranslate"><span class="pre">x</span></code> s.</p>
 <p>All images assume origin (<code class="docutils literal notranslate"><span class="pre">[0,0]</span></code>) of the image to be top-left, and the bottom right is <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>.</p>
+</div>
+</div>
+<div class="section" id="offers-request">
+<h2>Offers Request<a class="headerlink" href="#offers-request" title="Permalink to this headline">¶</a></h2>
 <p>Once the bounds were obtained, you can call the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link provided in the bounds response to get a list of offers related to the bound selected.</p>
 <p>The response for offers returns an object, where the attribute <code class="docutils literal notranslate"><span class="pre">ads</span></code> has a list of products to offer the user. It looks like <a class="reference external" href="http://wearesyte.com/apiexample/v1.1/example_offers.json">this</a>.</p>
 <p>Every product contains the following:</p>
@@ -291,10 +293,12 @@
 <li><code class="docutils literal notranslate"><span class="pre">imageUrl</span></code> - the image for the product</li>
 <li><code class="docutils literal notranslate"><span class="pre">offer</span></code> - the link to use to get to the product page at the sellers site.</li>
 </ul>
-<p>You can override the gender or the category by appending a param to the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link:</p>
 </div>
+<div class="section" id="overrides">
+<h2>Overrides<a class="headerlink" href="#overrides" title="Permalink to this headline">¶</a></h2>
+<p>You can override the gender or the category by appending a param to the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link:</p>
 <div class="section" id="gender-override">
-<h1>Gender Override<a class="headerlink" href="#gender-override" title="Permalink to this headline">¶</a></h1>
+<h3>Gender Override<a class="headerlink" href="#gender-override" title="Permalink to this headline">¶</a></h3>
 <p>Forcing a gender to the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link will force the results to fetch only products from the selected gender.</p>
 <p>To force results for male add: <code class="docutils literal notranslate"><span class="pre">&amp;force_gender=male</span></code>.</p>
 <p>To force results for female add: <code class="docutils literal notranslate"><span class="pre">&amp;force_gender=female</span></code>.</p>
@@ -304,7 +308,7 @@
 </div>
 </div>
 <div class="section" id="category-override">
-<h1>Category Override<a class="headerlink" href="#category-override" title="Permalink to this headline">¶</a></h1>
+<h3>Category Override<a class="headerlink" href="#category-override" title="Permalink to this headline">¶</a></h3>
 <p>Forcing a category to the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link will force the results to fetch only products from the selected category.</p>
 <p>For example, to force results for dresses add: <code class="docutils literal notranslate"><span class="pre">&amp;force_cats=Dresses</span></code>.</p>
 <p>See example for forcing cats=Dresses:</p>
@@ -312,6 +316,10 @@
 </pre></div>
 </div>
 <p>You can find the full list of categories <a class="reference external" href="http://wearesyte.com/apiexample/force_cats.json">here</a>.</p>
+</div>
+</div>
+<div class="section" id="related-looks">
+<h2>Related Looks<a class="headerlink" href="#related-looks" title="Permalink to this headline">¶</a></h2>
 <p>You can send an image and get related looks from social networks. To enable this feature, please contact Syte.</p>
 <p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=related_looks</span></code> to the bounds request. This feature will only work with version v1.1 of the API.</p>
 <p>Here is an example of a bounds call with the related_looks feature:</p>
@@ -319,6 +327,9 @@
 </pre></div>
 </div>
 <p>The response to this call includes a “related_looks” link (similar to the offers link), that when followed, will return a list of image URLs with similar looks from social networks.</p>
+</div>
+<div class="section" id="deep-tagging">
+<h2>Deep Tagging<a class="headerlink" href="#deep-tagging" title="Permalink to this headline">¶</a></h2>
 <p>You can send an image and get a break down of each garment in the image to its most nuanced attributes. To enable this feature, please contact Syte.</p>
 <p>To use this feature, please add <code class="docutils literal notranslate"><span class="pre">&amp;features=deeptags</span></code> to the bounds request. This feature will only work with version v1.1 of the API.</p>
 <p>Here is an example of a bounds call with the related_looks feature:</p>
@@ -326,9 +337,11 @@
 </pre></div>
 </div>
 <p>The response to this will add an array of tags to each bound returned from the bounds API call.</p>
+</div>
+</div>
 <hr class="docutils" />
 <div class="section" id="api-endpoint-v1-0">
-<h2>API Endpoint v1.0<a class="headerlink" href="#api-endpoint-v1-0" title="Permalink to this headline">¶</a></h2>
+<h1>API Endpoint v1.0<a class="headerlink" href="#api-endpoint-v1-0" title="Permalink to this headline">¶</a></h1>
 <div class="line-block">
 <div class="line">Using this API, Users will receive results as bounding boxes (a box on each item in the image)</div>
 <div class="line">and offers for each box.</div>
@@ -354,19 +367,16 @@
 </pre></div>
 </div>
 <div class="section" id="id2">
-<h3>Bounds Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-</div>
+<h2>Bounds Request<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h1>Image Upload<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<h3>Image Upload<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>You can ask for bounds of an <strong>image binary</strong>, by running the following command and replacing “my_test_image.jpg” with the path to the image on the file system.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h1>Image URL<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<h3>Image URL<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>You can also ask for bounds by sending an <strong>image URL</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -v <span class="s1">&#39;https://syteapi.com/offers/bb?account_id=[YOUR_ACCOUNT_ID]&amp;sig=[YOUR_ACCOUT_SIGNATURE]&amp;feed=[YOUR_FEED_NAME]&amp;payload_type=image_bin&#39;</span> --data-binary @my_test_image.jpg
 </pre></div>
@@ -394,6 +404,10 @@
 <p><code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> of any of the points are in fractions. numbers in the range <code class="docutils literal notranslate"><span class="pre">[0..1]</span></code>.</p>
 <p>To make an actual coordinate on an image, just multiply image height by <code class="docutils literal notranslate"><span class="pre">y</span></code> s and image width by <code class="docutils literal notranslate"><span class="pre">x</span></code> s.</p>
 <p>All images assume origin (<code class="docutils literal notranslate"><span class="pre">[0,0]</span></code>) of the image to be top-left, and the bottom right is <code class="docutils literal notranslate"><span class="pre">[1,1]</span></code>.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Offers Request<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>Once the bounds were obtained, you can call the <code class="docutils literal notranslate"><span class="pre">offers</span></code> link provided in the bounds response to get a list of offers related to the bound selected.</p>
 <p>The response for offers returns an object, where the attribute <code class="docutils literal notranslate"><span class="pre">ads</span></code> has a list of products to offer the user. It looks like <a class="reference external" href="http://wearesyte.com/apiexample/example_offers.json">this</a>.</p>
 <p>Every product contains the following:</p>
@@ -408,9 +422,11 @@
 <li><code class="docutils literal notranslate"><span class="pre">imageUrl</span></code> - the image for the product</li>
 <li><code class="docutils literal notranslate"><span class="pre">offer</span></code> - the link to use to get to the product page at the sellers site.</li>
 </ul>
+</div>
+</div>
 <hr class="docutils" />
 <div class="section" id="camera-upload-integration">
-<h2>Camera Upload Integration<a class="headerlink" href="#camera-upload-integration" title="Permalink to this headline">¶</a></h2>
+<h1>Camera Upload Integration<a class="headerlink" href="#camera-upload-integration" title="Permalink to this headline">¶</a></h1>
 <p>Web and Mobile Web integration of the camera upload button is done by doing the following:</p>
 <p>Design the camera icon that will launch the feature and give it this class:</p>
 <div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;javascript:void(0)&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;--syte-start-camera-upload&quot;</span><span class="p">&gt;</span>
@@ -421,8 +437,27 @@
 </pre></div>
 </div>
 <p>Users of this service should provide an <code class="docutils literal notranslate"><span class="pre">account_id</span></code> and <code class="docutils literal notranslate"><span class="pre">sig</span></code> params, as provided by Syte.</p>
-<hr class="docutils" />
 </div>
+<hr class="docutils" />
+<div class="section" id="search-api">
+<h1>Search API<a class="headerlink" href="#search-api" title="Permalink to this headline">¶</a></h1>
+<p>Using our Search API, You are able to send rich text queries and recieve relevant results for these queries.</p>
+<p>You can ask for search results using the following API call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://search.syteapi.com/search/items?q<span class="o">=</span>dress<span class="p">&amp;</span><span class="nv">account_id</span><span class="o">=[</span>YOUR_ACCOUNT_ID_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">feed</span><span class="o">=[</span>YOUR_FEED_NAME<span class="o">]</span><span class="p">&amp;</span><span class="nv">sig</span><span class="o">=[</span>YOUR_ACCOUT_SIGNATURE<span class="o">]</span>
+</pre></div>
+</div>
+<p>As in every API request, You need to replace the [] with the credentials provided by Syte. (<code class="docutils literal notranslate"><span class="pre">[YOUR_ACCOUNT_ID_HERE]</span></code> , <code class="docutils literal notranslate"><span class="pre">[YOUR_FEED_NAME]</span></code> , <code class="docutils literal notranslate"><span class="pre">[YOUR_ACCOUT_SIGNATURE]</span></code>)</p>
+<div class="line-block">
+<div class="line">Put your desired search query after the param <code class="docutils literal notranslate"><span class="pre">q=</span></code>.</div>
+<div class="line">In the example above, the word <code class="docutils literal notranslate"><span class="pre">dress</span></code> is searched. (<code class="docutils literal notranslate"><span class="pre">q=dress</span></code>)</div>
+<div class="line">In order to search multiple words, add <code class="docutils literal notranslate"><span class="pre">+</span></code> between each word.</div>
+<div class="line">(e.g. <code class="docutils literal notranslate"><span class="pre">blue+maxi+dress</span></code>)</div>
+</div>
+<p>In conclusion, to search for a blue maxi dress, use this API call:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>https://search.syteapi.com/search/items?q<span class="o">=</span>blue+maxi+dress<span class="p">&amp;</span><span class="nv">account_id</span><span class="o">=[</span>YOUR_ACCOUNT_ID_HERE<span class="o">]</span><span class="p">&amp;</span><span class="nv">feed</span><span class="o">=[</span>YOUR_FEED_NAME<span class="o">]</span><span class="p">&amp;</span><span class="nv">sig</span><span class="o">=[</span>YOUR_ACCOUT_SIGNATURE<span class="o">]</span>
+</pre></div>
+</div>
+<hr class="docutils" />
 </div>
 <div class="section" id="product-catalog-data-feed">
 <span id="productfeed"></span><h1>Product Catalog - Data Feed<a class="headerlink" href="#product-catalog-data-feed" title="Permalink to this headline">¶</a></h1>

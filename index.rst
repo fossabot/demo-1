@@ -1,5 +1,5 @@
 Welcome to the Syte API Documentation!
-======================================
+######################################
 
 .. toctree::
    :caption: Table of Contents
@@ -9,9 +9,10 @@ Welcome to the Syte API Documentation!
    apiendpoint11
    apiendpoint1
    camera
+   searchapi
    productfeed
    support
-   searchapi
+
    
 
 -----------------------------------
@@ -33,5 +34,8 @@ Welcome to the Syte API Documentation!
 
 -----------------------------------
 
-.. include:: productfeed.rst
+.. include:: searchapi.rst
 
+-----------------------------------
+
+.. include:: productfeed.rst
